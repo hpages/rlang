@@ -150,6 +150,10 @@
 #' }
 #' @export
 eval_tidy <- function(expr, data = NULL, env = caller_env()) {
+  UseMethod("eval_tidy", data)
+}
+#' @export
+eval_tidy.default <- function(expr, data = NULL, env = caller_env()) {
   .Call(rlang_eval_tidy, expr, data, env)
 }
 
